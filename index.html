@@ -5,243 +5,255 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lily Plant - Official Website</title>
   <style>
-    /* Reset */
+    /* Basic Reset */
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f8ff;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: #E3F6F5;
+      color: #0B3C49;
       line-height: 1.6;
+      min-height: 100vh;
+      transition: background-color 0.4s, color 0.4s;
     }
 
-    /* Navigation */
-    nav {
-      background-color: #2e8b57;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    /* Dark mode */
+    body.dark {
+      background: #121212;
+      color: #E3F6F5;
     }
 
-    nav .container {
-      max-width: 1000px;
-      margin: 0 auto;
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(11, 60, 73, 0.15);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark .container {
+      background: #1E1E1E;
+      color: #E3F6F5;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Header */
+    header {
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      justify-content: space-between;
-    }
-
-    nav img {
-      height: 50px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
       gap: 20px;
-    }
-
-    nav ul li {
-      cursor: pointer;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    nav ul li a:hover,
-    nav ul li a:focus {
-      background-color: #3cb371;
-      outline: none;
-    }
-
-    header h1 {
-      color: white;
-      margin-left: 15px;
-      font-size: 1.8rem;
-      flex-grow: 1;
+      margin-bottom: 30px;
       user-select: none;
     }
 
-    /* Main container */
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px 30px;
-      border-radius: 10px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    header img {
+      height: 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(11, 60, 73, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.1);
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      flex-grow: 1;
+      color: #0B3C49;
+    }
+
+    body.dark header h1 {
+      color: #E3F6F5;
+    }
+
+    /* Dark mode toggle */
+    #darkToggle {
+      padding: 10px 20px;
+      background: #0B3C49;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(11, 60, 73, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    #darkToggle:hover {
+      background: #145A6D;
+    }
+
+    body.dark #darkToggle {
+      background: #E3F6F5;
+      color: #0B3C49;
+    }
+
+    body.dark #darkToggle:hover {
+      background: #B7DBE0;
     }
 
     /* Plant Image */
     .plant-image {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+      position: relative;
     }
 
     .plant-image img {
       max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.4s ease;
-      cursor: pointer;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(11, 60, 73, 0.2);
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
     }
 
     .plant-image img:hover {
       transform: scale(1.05);
     }
 
-    /* Section Titles */
+    /* Section titles */
     h2 {
-      color: #2e8b57;
+      color: #0B3C49;
       margin-bottom: 15px;
+      border-bottom: 3px solid #0B3C49;
+      padding-bottom: 6px;
       user-select: none;
     }
 
-    /* Accordion styles */
-    .accordion {
-      background-color: #e6f2ff;
-      cursor: pointer;
-      padding: 18px 20px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
+    body.dark h2 {
+      color: #E3F6F5;
+      border-color: #E3F6F5;
+    }
+
+    /* About and Group sections */
+    p {
       font-size: 1.1rem;
-      font-weight: 600;
-      color: #2e8b57;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(46,139,87,0.3);
-      transition: background-color 0.3s ease;
-      user-select: none;
-      margin-bottom: 10px;
-    }
-
-    .accordion:hover,
-    .accordion.active {
-      background-color: #3cb371;
-      color: white;
-    }
-
-    .panel {
-      padding: 0 20px 15px 20px;
-      background-color: white;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      border-left: 3px solid #2e8b57;
-      border-radius: 0 0 8px 8px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    /* Group Members List */
     ul.members-list {
       list-style-type: disc;
-      padding-left: 20px;
-      font-size: 1rem;
+      margin-left: 25px;
+      font-size: 1.1rem;
     }
 
     ul.members-list li {
-      margin-bottom: 8px;
-      color: #444;
+      margin-bottom: 10px;
       transition: color 0.3s ease;
       cursor: default;
     }
 
     ul.members-list li:hover {
-      color: #2e8b57;
+      color: #145A6D;
       font-weight: 600;
     }
 
     /* Footer */
     footer {
-      background-color: #2e8b57;
-      color: white;
       text-align: center;
-      padding: 15px 20px;
-      margin-top: 40px;
+      margin: 50px 0 20px;
+      color: #0B3C49;
+      font-weight: 600;
       user-select: none;
-      font-size: 0.9rem;
+    }
+
+    body.dark footer {
+      color: #E3F6F5;
+    }
+
+    /* Modal styles for image zoom */
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    #modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(255,255,255,0.7);
+      user-select: none;
+      pointer-events: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
 
     /* Responsive */
     @media (max-width: 600px) {
-      nav .container {
-        flex-direction: column;
-        gap: 10px;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-      }
-      nav ul li {
-        text-align: center;
+      .container {
+        margin: 20px 15px;
+        padding: 20px;
       }
       header h1 {
-        margin-left: 0;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+      }
+      #darkToggle {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      p, ul.members-list li {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container">
-      <img src="logo.png" alt="Website Logo" />
-      <h1>Lily Plant</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#plant-photo">Photo</a></li>
-        <li><a href="#group-members">Group</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <div class="container">
 
-    <section id="plant-photo" class="plant-image">
-      <img src="lily.jpg" alt="Lily Plant Photo" title="Lily Plant" />
+    <header>
+      <img src="logo.png" alt="Website Logo" id="logo" title="Lily Plant Logo" />
+      <h1>Lily Plant</h1>
+      <button id="darkToggle" aria-label="Toggle dark mode">Dark Mode</button>
+    </header>
+
+    <section class="plant-image">
+      <img src="lily.jpg" alt="Lily Plant Photo" id="plantPhoto" title="Click to zoom" />
     </section>
 
     <section id="about">
-      <button class="accordion">About Lily Plant</button>
-      <div class="panel">
-        <p>
-          The lily is a flowering plant of the genus <em>Lilium</em>. Lilies are known for their large, prominent flowers 
-          and are native to the temperate regions of the Northern Hemisphere. They are commonly grown for their beauty 
-          and fragrance and are often used in gardens and floral arrangements.
-        </p>
-        <p>
-          Lilies come in a variety of colors including white, pink, orange, and yellow. They symbolize purity, renewal, 
-          and transience. They thrive in well-drained soils and sunny locations.
-        </p>
-      </div>
+      <h2>About Lily Plant</h2>
+      <p>
+        The lily is a flowering plant of the genus <em>Lilium</em>. Lilies are known for their large, prominent flowers 
+        and are native to the temperate regions of the Northern Hemisphere. They are commonly grown for their beauty 
+        and fragrance and are often used in gardens and floral arrangements.
+      </p>
+      <p>
+        Lilies come in a variety of colors including white, pink, orange, and yellow. They symbolize purity, renewal, 
+        and transience. They thrive in well-drained soils and sunny locations.
+      </p>
     </section>
 
     <section id="group-members">
-      <button class="accordion">Group Members</button>
-      <div class="panel">
-        <ul class="members-list">
-          <li>Shastri Ritesh</li>
-          <li>Shaikh Ismail</li>
-          <li>Shaikh Joyeb</li>
-          <li>Pise Jaydeep</li>
-        </ul>
-      </div>
+      <h2>Group Members</h2>
+      <ul class="members-list">
+        <li>Shastri Ritesh</li>
+        <li>Shaikh Ismail</li>
+        <li>Shaikh Joyeb</li>
+        <li>Pise Jaydeep</li>
+      </ul>
     </section>
 
   </div>
@@ -250,46 +262,42 @@
     &copy; 2025 Lily Plant Project. All rights reserved.
   </footer>
 
+  <!-- Modal for image zoom -->
+  <div id="modal" role="dialog" aria-modal="true" aria-label="Zoomed image view">
+    <img src="" alt="Zoomed Lily Plant" />
+  </div>
+
   <script>
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          window.scrollTo({
-            top: targetSection.offsetTop - 60, // account for nav height
-            behavior: 'smooth',
-          });
-        }
-      });
+    // Dark mode toggle
+    const toggleBtn = document.getElementById('darkToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
     });
 
-    // Accordion functionality
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(acc => {
-      acc.addEventListener('click', () => {
-        acc.classList.toggle('active');
-        const panel = acc.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-        }
-      });
+    // Image zoom modal
+    const plantPhoto = document.getElementById('plantPhoto');
+    const modal = document.getElementById('modal');
+    const modalImg = modal.querySelector('img');
+
+    plantPhoto.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = plantPhoto.src;
     });
 
-    // Expand the first accordion by default
-    window.addEventListener('load', () => {
-      if (accordions.length) {
-        accordions[0].classList.add('active');
-        const panel = accordions[0].nextElementSibling;
-        panel.style.maxHeight = panel.scrollHeight + 'px';
+    modal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+
+    // Accessibility: close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        modalImg.src = '';
       }
     });
   </script>
 
 </body>
 </html>
-
