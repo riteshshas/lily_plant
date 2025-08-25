@@ -5,218 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lily Plant - Official Website</title>
   <style>
-    /* Basic Reset */
+    /* Reset & base */
     * {
       box-sizing: border-box;
       margin: 0; padding: 0;
     }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #E3F6F5;
-      color: #0B3C49;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      color: #2c3e50;
       line-height: 1.6;
       min-height: 100vh;
-      transition: background-color 0.4s, color 0.4s;
+      padding: 20px;
     }
 
-    /* Dark mode */
-    body.dark {
-      background: #121212;
-      color: #E3F6F5;
-    }
-
-    /* Container */
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(11, 60, 73, 0.15);
-      transition: background 0.4s, color 0.4s;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+      border-left: 8px solid #3498db;
     }
 
-    body.dark .container {
-      background: #1E1E1E;
-      color: #E3F6F5;
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
-    }
-
-    /* Header */
     header {
       display: flex;
       align-items: center;
       gap: 20px;
       margin-bottom: 30px;
-      user-select: none;
     }
-
     header img {
       height: 60px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(11, 60, 73, 0.2);
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      border-radius: 8px;
+      border: 2px solid #3498db;
     }
-
-    header img:hover {
-      transform: scale(1.1);
-    }
-
     header h1 {
+      font-size: 2.4rem;
+      color: #2980b9;
       font-weight: 700;
-      font-size: 2rem;
-      flex-grow: 1;
-      color: #0B3C49;
-    }
-
-    body.dark header h1 {
-      color: #E3F6F5;
-    }
-
-    /* Dark mode toggle */
-    #darkToggle {
-      padding: 10px 20px;
-      background: #0B3C49;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 3px 10px rgba(11, 60, 73, 0.4);
-      transition: background-color 0.3s ease;
       user-select: none;
     }
 
-    #darkToggle:hover {
-      background: #145A6D;
-    }
-
-    body.dark #darkToggle {
-      background: #E3F6F5;
-      color: #0B3C49;
-    }
-
-    body.dark #darkToggle:hover {
-      background: #B7DBE0;
-    }
-
-    /* Plant Image */
-    .plant-image {
-      text-align: center;
-      margin-bottom: 35px;
-      position: relative;
-    }
-
-    .plant-image img {
-      max-width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(11, 60, 73, 0.2);
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-
-    .plant-image img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Section titles */
     h2 {
-      color: #0B3C49;
+      margin-top: 30px;
       margin-bottom: 15px;
-      border-bottom: 3px solid #0B3C49;
-      padding-bottom: 6px;
-      user-select: none;
-    }
-
-    body.dark h2 {
-      color: #E3F6F5;
-      border-color: #E3F6F5;
-    }
-
-    /* About and Group sections */
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-
-    ul.members-list {
-      list-style-type: disc;
-      margin-left: 25px;
-      font-size: 1.1rem;
-    }
-
-    ul.members-list li {
-      margin-bottom: 10px;
-      transition: color 0.3s ease;
-      cursor: default;
-    }
-
-    ul.members-list li:hover {
-      color: #145A6D;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 5px;
+      color: #2980b9;
       font-weight: 600;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 25px;
+      list-style-type: square;
+      color: #34495e;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      color: #34495e;
+    }
+
+    .group-members li {
+      font-weight: 600;
+      color: #2c3e50;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      margin: 50px 0 20px;
-      color: #0B3C49;
+      margin-top: 40px;
       font-weight: 600;
+      color: #7f8c8d;
       user-select: none;
     }
 
-    body.dark footer {
-      color: #E3F6F5;
+    /* Plant image at the end */
+    .plant-image {
+      margin-top: 40px;
+      text-align: center;
     }
-
-    /* Modal styles for image zoom */
-    #modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0; top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
-
-    #modal img {
-      max-width: 90vw;
-      max-height: 90vh;
+    .plant-image img {
+      max-width: 350px;
+      width: 90%;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(255,255,255,0.7);
+      border: 3px solid #3498db;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
       user-select: none;
-      pointer-events: none;
-      animation: fadeIn 0.4s ease forwards;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .container {
-        margin: 20px 15px;
-        padding: 20px;
-      }
-      header h1 {
-        font-size: 1.5rem;
-      }
-      #darkToggle {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-      p, ul.members-list li {
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -224,36 +109,101 @@
   <div class="container">
 
     <header>
-      <img src="logo.png.jpeg" alt="Website Logo" id="logo" title="Lily Plant Logo" />
+      <img src="logo.png.jpeg" alt="Lily Plant Logo" />
       <h1>Lily Plant</h1>
-      <button id="darkToggle" aria-label="Toggle dark mode">Dark Mode</button>
     </header>
 
-    <section class="plant-image">
-      <img src="lily.jpg.jpeg" alt="Lily Plant Photo" id="plantPhoto" title="Click to zoom" />
+    <section id="overview">
+      <h2>Overview</h2>
+      <ul>
+        <li><strong>Scientific genus:</strong> <em>Lilium</em></li>
+        <li><strong>Family:</strong> Liliaceae</li>
+        <li><strong>Type:</strong> Perennial flowering plants</li>
+        <li><strong>Native to:</strong> Northern Hemisphere (mostly Asia, Europe, and North America)</li>
+      </ul>
     </section>
 
-    <section id="about">
-      <h2>About Lily Plant</h2>
-      <p>
-        The lily is a flowering plant of the genus <em>Lilium</em>. Lilies are known for their large, prominent flowers 
-        and are native to the temperate regions of the Northern Hemisphere. They are commonly grown for their beauty 
-        and fragrance and are often used in gardens and floral arrangements.
-      </p>
-      <p>
-        Lilies come in a variety of colors including white, pink, orange, and yellow. They symbolize purity, renewal, 
-        and transience. They thrive in well-drained soils and sunny locations.
-      </p>
+    <section id="description">
+      <h2>Description</h2>
+      <p>Lilies are bulbous plants that grow from underground bulbs. They have tall, erect stems with large, often fragrant flowers.</p>
+      <p>Flowers come in a variety of colors, including white, yellow, orange, pink, red, and purple.</p>
+      <p>The flowers are trumpet-shaped or bowl-shaped and usually have six petal-like tepals.</p>
+    </section>
+
+    <section id="growth-care">
+      <h2>Growth & Care</h2>
+      <ul>
+        <li><strong>Light:</strong> Prefer full sun to partial shade.</li>
+        <li><strong>Soil:</strong> Well-drained, rich, and slightly acidic to neutral soil.</li>
+        <li><strong>Water:</strong> Keep soil consistently moist but not waterlogged.</li>
+        <li><strong>Temperature:</strong> Most lilies prefer moderate climates but some species tolerate cold winters.</li>
+        <li><strong>Propagation:</strong> By bulbs or seeds.</li>
+      </ul>
+    </section>
+
+    <section id="types">
+      <h2>Types of Lilies</h2>
+      <ul>
+        <li><strong>Asiatic Lilies:</strong> Early bloomers, bright colors, no fragrance.</li>
+        <li><strong>Oriental Lilies:</strong> Late bloomers, strong fragrance, larger flowers.</li>
+        <li><strong>Trumpet Lilies:</strong> Trumpet-shaped flowers, fragrant.</li>
+        <li><strong>Tiger Lilies:</strong> Orange with black spots, hardy.</li>
+      </ul>
+    </section>
+
+    <section id="uses">
+      <h2>Uses</h2>
+      <ul>
+        <li>Popular ornamental plants in gardens and floral arrangements.</li>
+        <li>Some species have cultural or symbolic significance (e.g., purity, renewal).</li>
+        <li>Certain lilies are toxic to cats, so caution is needed if you have pets.</li>
+      </ul>
     </section>
 
     <section id="group-members">
       <h2>Group Members</h2>
-      <ul class="members-list">
+      <ul class="group-members">
         <li>Shastri Ritesh</li>
         <li>Shaikh Ismail</li>
         <li>Shaikh Joyeb</li>
         <li>Pise Jaydeep</li>
       </ul>
+    </section>
+
+    <section class="plant-image" aria-label="Photo of Lily Plant">
+      <img src="lily.jpg.jpeg" alt="Beautiful Lily Plant" />
+    </section>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Lily Plant Project. All rights reserved.
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lily Plant - Official Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <img src="images/logo.png" alt="Lily Plant Logo" />
+      <h1>Lily Plant</h1>
+      <button id="darkToggle" aria-label="Toggle dark mode">Dark Mode</button>
+    </header>
+
+    <!-- All your content sections here -->
+
+    <section class="plant-image" aria-label="Photo of Lily Plant">
+      <img src="images/lily.jpg" alt="Beautiful Lily Plant" />
     </section>
 
   </div>
@@ -267,38 +217,6 @@
     <img src="" alt="Zoomed Lily Plant" />
   </div>
 
-  <script>
-    // Dark mode toggle
-    const toggleBtn = document.getElementById('darkToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      toggleBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-    });
-
-    // Image zoom modal
-    const plantPhoto = document.getElementById('plantPhoto');
-    const modal = document.getElementById('modal');
-    const modalImg = modal.querySelector('img');
-
-    plantPhoto.addEventListener('click', () => {
-      modal.style.display = 'flex';
-      modalImg.src = plantPhoto.src;
-    });
-
-    modal.addEventListener('click', () => {
-      modal.style.display = 'none';
-      modalImg.src = '';
-    });
-
-    // Accessibility: close modal on ESC key
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && modal.style.display === 'flex') {
-        modal.style.display = 'none';
-        modalImg.src = '';
-      }
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-
