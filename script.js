@@ -1,11 +1,11 @@
-// Dark mode toggle logic
+// Dark mode toggle
 const toggleBtn = document.getElementById('darkToggle');
 toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   toggleBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
 });
 
-// Image zoom modal logic
+// Image zoom modal
 const plantPhoto = document.querySelector('.plant-image img');
 const modal = document.getElementById('modal');
 const modalImg = modal.querySelector('img');
@@ -22,7 +22,7 @@ modal.addEventListener('click', () => {
   modalImg.alt = '';
 });
 
-// Close modal on ESC key press
+// Close modal on ESC key
 document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape' && modal.style.display === 'flex') {
     modal.style.display = 'none';
